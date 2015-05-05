@@ -25,6 +25,13 @@ var server = app.listen(app.get('port'), function() {
 
 var io = require('socket.io').listen(server);
 
+var client = new Twitter({
+  consumer_key: 'GHUf65msg3VlzpOrNN7GChIMY',
+  consumer_secret: 'PniIQEEqNfwWnjdN3KkiYi7laN6xFF2DSKvJtrc5vYxIAoeVFv',
+  access_token_key: '2239995774-ttJJRyU20OPHBlSsjWA3y58Em9syYmqGNkpzGhX',
+  access_token_secret: 'RSskwDX6qGfdltOzU1bAhNb8NcSc6ZLYGmR3yhAEPvzuB'
+});
+
 client.stream('statuses/filter', { track: ['madrid', 'barcelona'] }, function(stream) {
   stream.on('data', function (data) {
     if (data.text) { 
